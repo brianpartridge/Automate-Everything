@@ -1,9 +1,9 @@
 //
 //  BPAppDelegate.m
-//  HelloWorld
+//  Hello iPhone
 //
-//  Created by Brian Partridge on 12/8/12.
-//  Copyright (c) 2012 Brian Partridge. All rights reserved.
+//  Created by Brian Partridge on 8/10/13.
+//  Copyright (c) 2013 Brian Partridge. All rights reserved.
 //
 
 #import "BPAppDelegate.h"
