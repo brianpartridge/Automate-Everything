@@ -2,7 +2,7 @@
 
 ## Description
 
-The app build as part of the a Jenkins job.
+The app built as part of the a Jenkins job.
 
 ## Setup
 
