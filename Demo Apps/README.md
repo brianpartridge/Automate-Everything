@@ -10,7 +10,12 @@ The app built as part of the a Jenkins job.
 - Disable unused plugins in Jenkins (Maven, CVS, etc)
 - Install required plugins (Xcode, git, TestFlight, etc)
 
-## Demo Steps
+## Demo 1
+### Prerequisites
+- Install the git and Xcode plugins
+- Use xcode-select to select the desired Xcode.app
+
+### Steps
 
 - Show off the local instance of Jenkins:
 
@@ -19,7 +24,7 @@ The app built as part of the a Jenkins job.
 - Create a new job named Hello World.
 - Specify the git repository path.
 
-        /path/to/Automate-Everything-Continuous-Integration-for-iOS-and-Mac
+        /path/to/Automate-Everything
 
 - Specify the polling frequency.
 
@@ -29,14 +34,35 @@ The app built as part of the a Jenkins job.
 - Specify the build settings.
     
         Configuration: 
-            Debug
+            Release
         Xcode Project Directory: 
-            Demo/HelloWorld
+            Demo Apps/HelloWorld
         Build IPA: 
             Checked
+            
+- Save and a build should automatically start within a minute
 
+## Demo 2
+### Prerequisites
+- Install the TestFlight plugin
+- Under Manage Jenkins, add a token pair for your account and the team you will upload to.
+
+### Steps
 - Post build step: Archive the artifacts
     
-        Demo/HelloWorld/build/**/*.ipa,Demo/HelloWorld/build/**/*-dSYM.zip
-    
-- Save and a build should automatically start within a minute
+        Demo Apps/HelloWorld/build/**/*.ipa,Demo Apps/HelloWorld/build/**/*-dSYM.zip
+        
+- Post build step: Upload to TestFlight:
+  - Specify the correct token pair name.
+
+- Post build step: Email Notification
+  - Specify the target email address.
+  
+  
+
+## Demo 3
+### Prerequisites
+- Fusion is installed with an OSX VM
+
+### Steps
+- See ../Demo Scripts/README.md
