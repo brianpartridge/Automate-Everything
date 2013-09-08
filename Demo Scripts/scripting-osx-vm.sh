@@ -5,7 +5,8 @@
 # NOTE: Waiting for the guest OS to boot is a bit of a hack.  Here, the VM is preconfigured to open Safari as a Login Item.  The script polls the VM until it sees that Safari is running before performing other actions.
 
 # Config
-VMPATH="/Volumes/Storage/Virtual Machines/Demo/Mac OS X 10.7 64-bit.vmwarevm"
+FUSION_PATH="/Applications/VMware Fusion.app"
+VMPATH="/Users/brian/Downloads/Mac OS X 10.7 64-bit.vmwarevm"
 TARGET_SNAPSHOT="Setup For Testing"
 OUTPUT_PATH="/Users/brian/Desktop/Screenshots/screenshot.png"
 GUEST_TARGET_PROCESS="Safari"
@@ -15,11 +16,13 @@ HEADLESS=false
 
 #####################
 
-export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
+export PATH="$PATH:$FUSION_PATH/Contents/Library"
 
 echo "Scripting OSX VM:"
 
 GUEST_AUTH="-gu $GUEST_USER -gp $GUEST_PASS"
+
+open $FUSION_PATH
 
 # Boot into desired VM state
 FOUND_SNAPSHOT=`vmrun listSnapshots "$VMPATH" | grep "$TARGET_SNAPSHOT"`
@@ -48,7 +51,7 @@ echo " - Successfully booted"
 # Perform actions
 echo " - Performing actions"
 vmrun $GUEST_AUTH runScriptInGuest "$VMPATH" "/bin/bash" "open http://360idev.com"
-sleep 15  # Wait for page to load
+sleep 20  # Wait for page to load
 vmrun $GUEST_AUTH captureScreen "$VMPATH" "$OUTPUT_PATH"
 
 # Clean up
